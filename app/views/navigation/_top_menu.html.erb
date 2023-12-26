@@ -1,0 +1,45 @@
+<div class="w-full grid grid-cols-12 col-start-1 col-span-12 h-[80px] bg-zinc-100 items-center rounded-b-lg gap-x-5 px-4">
+  <img class="h-[80px] place-content-center" src="logo.png">
+  <%= link_to root_path, class: 'flex col-span-3 inline-box items-start justify-start' do %>
+    <span class="flex text-sm text-zinc-700 font-bold text-xl">ENGaroo.online</span>
+  <% end %>
+
+  <div class="flex col-start-11 col-span-2 justify-center">
+    <% if current_user.present? %>
+      <div class="dropdown dropdown-end">
+        <div role="button" tabindex="0" class="flex justify-center items-center">
+          <svg class="h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path d="M17 9.5L12 14.5L7 9.5" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <% if current_user.profile.present? %>
+            <div class="text-xl font-semibold text-orange-800"><%= current_user.profile.first_name if current_user.profile.present? %></div>
+          <% else %>
+            <div class="text-xl font-semibold text-gray-900">Г</div>
+          <% end %>
+        </div>
+        <ul tabindex="0" class="dropdown-content z-[1] w-64 mt-1 px-5 py-4 shadow bg-[#F9FAFB] border-[1px] border-[#D1D5DB] rounded-lg text-sm font-medium">
+          <li>
+            <% if current_user.profile.present? %>
+              <% if current_user.profile.first_name.present? %>
+                <%= button_to my_profile_path, method: :get, class: 'flex w-full h-[20px] text-zinc-800 hover:text-[#B91C1C] items-center' do %>
+                  Профиль
+                <% end %>
+              <% end %>
+            <% end %>
+          </li>
+          <li>
+            <%= button_to destroy_user_session_path, method: :delete, class: 'flex w-full text-[#DC2626] hover:text-[#B91C1C] pt-2 items-center' do %>
+              Выход
+            <% end %>
+          </li>
+        </ul>
+      </div>
+    <% else %>
+      <div class="flex col-start-12 justify-center items-center">
+        <%= button_to new_user_session_path, method: :get, class: 'flex w-full text-[#DC2626] hover:text-[#B91C1C] pt-2 items-center' do %>
+          Войти
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
