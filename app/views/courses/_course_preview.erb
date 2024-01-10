@@ -1,0 +1,63 @@
+<div class="flex-none gap-x-5 grid grid-cols-11 bg-zinc-100 mb-5 py-4 px-4 rounded-lg items-center">
+  <div class="px-4 col-span-2 grid grid-cols-1 h-44 bg-orange-300 rounded-xl border-[1px] border-zinc-800 items-center ">
+    <p class="flex line-clamp-2 text-sm w-full h-max text-zinc-600 font-bold items-center place-content-center"><%= course.title %></p>
+    <%= button_to new_user_course_lesson_path(current_user, course.id), method: :get, class: 'flex bg-orange-100 w-full text-sm rounded-box border-[1px] border-zinc-800 text-zinc-700 px-2 py-2 place-content-center' do %>
+    Новый урок
+    <% end %>
+    <%= button_to new_user_course_path(current_user), class: 'flex bg-orange-100 w-full text-xs rounded-box border-[1px] border-zinc-800 text-zinc-700 px-2 py-2 place-content-center' do %>
+      Редактировать
+    <% end %>
+  </div>
+
+  <% course.lessons.last_lessons_preview.each do |lesson| %>
+    <div role="button" class="col-span-2 grid grid-row-3 px-4 h-36 bg-zinc-200 rounded-xl border-[1px] border-zinc-800 justify-center">
+      <span class="flex font-bold text-xl text-zinc-600 justify-center">Урок <%=lesson.order %></span>
+      <span class="flex text-ellipsis line-clamp-2 mt-4 font-bold text-sm text-zinc-400 justify-center place-content-center"><%=lesson.title %></span>
+      <%= button_to new_user_course_path(current_user), class: 'flex bg-orange-100 mt-4 w-full text-xs rounded-box border-[1px] border-zinc-800 text-zinc-700 px-2 py-2 place-content-center' do %>
+        Редактировать
+      <% end %>
+    </div>
+  <% end %>
+
+<!--  Урок 9-->
+<!--  <div role="button" class="col-span-1 px-4 w-full h-36 bg-zinc-200 rounded-xl border-[1px] border-zinc-800 justify-center">-->
+<!--    <span class="flex font-bold text-xl text-zinc-600 justify-center">Урок 9</span>-->
+<!--    <span class="line-clamp-2 mt-4 font-bold text-sm text-zinc-400 justify-center place-content-center">Лексика на тему "В ресторане"</span>-->
+    <%#= button_to new_user_course_path(current_user), class: 'flex bg-orange-100 mt-4 w-full text-xs rounded-box border-[1px] border-zinc-800 text-zinc-700 px-2 py-2 place-content-center' do %>
+<!--      Редактировать-->
+    <%# end %>
+<!--  </div>-->
+
+  <!--  Урок 8-->
+<!--  <div role="button" class="col-span-1 px-4 w-full h-36 bg-zinc-200 rounded-xl border-[1px] border-zinc-800 justify-center">-->
+<!--    <span class="flex font-bold text-xl text-zinc-600 justify-center">Урок 8</span>-->
+<!--    <span class="line-clamp-2 mt-4 font-bold text-sm text-zinc-400 justify-center place-content-center">4В Повторение</span>-->
+    <%#= button_to new_user_course_path(current_user), class: 'flex bg-orange-100 mt-4 w-full text-xs rounded-box border-[1px] border-zinc-800 text-zinc-700 px-2 py-2 place-content-center' do %>
+<!--      Редактировать-->
+    <%# end %>
+<!--  </div>-->
+
+  <!--  Урок 7-->
+<!--  <div role="button" class="col-span-1 px-4 w-full h-36 bg-zinc-200 rounded-xl border-[1px] border-zinc-800 justify-center">-->
+<!--    <span class="flex font-bold text-xl text-zinc-600 justify-center">Урок 7</span>-->
+<!--    <span class="line-clamp-2 mt-4 font-bold text-sm text-zinc-400 justify-center place-content-center">5-4 Неправильные глаголы</span>-->
+    <%#= button_to new_user_course_path(current_user), class: 'flex bg-orange-100 mt-4 w-full text-xs rounded-box border-[1px] border-zinc-800 text-zinc-700 px-2 py-2 place-content-center' do %>
+<!--      Редактировать-->
+    <%# end %>
+<!--  </div>-->
+
+  <!--  Урок 6-->
+<!--  <div role="button" class="col-span-1 px-4 w-full h-36 bg-zinc-200 rounded-xl border-[1px] border-zinc-800 justify-center hover:background-[#B91C1C]">-->
+<!--    <span class="flex font-bold text-xl text-zinc-600 justify-center">Урок 6</span>-->
+<!--    <span class="line-clamp-2 mt-4 font-bold text-sm text-zinc-400 justify-center place-content-center">Past Simple</span>-->
+    <%#= button_to new_user_course_path(current_user), class: 'flex-none bg-orange-100 mt-4 w-full text-xs rounded-box border-[1px] border-zinc-800 text-zinc-700 px-2 py-2 place-content-center' do %>
+<!--      Редактировать-->
+    <%# end %>
+<!--  </div>-->
+
+  <a href="<%= user_course_lessons_path(current_user, course.id) %>" role="button" class="flex col-span-1 px-4 bg-orange-200 rounded-xl border-[1px] border-zinc-800 justify-center items-center hover:background-[#B91C1C]">
+    <svg class="flex h-10 w-10" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path d="M6 12H18M18 12L13 7M18 12L13 17" stroke="#000000" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </a>
+</div>

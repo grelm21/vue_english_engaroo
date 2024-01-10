@@ -1,0 +1,15 @@
+---
+one:
+  id: 4
+  title: Урок про что-то
+  description:
+  order:
+  demo:
+  course: one
+two:
+  id: 5
+  title: Урок про что-то
+  description:
+  order:
+  demo:
+  course: one

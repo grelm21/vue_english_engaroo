@@ -1,0 +1,18 @@
+<%= render 'navigation/nav_bar' %>
+
+<div class="col-span-12 w-full pt-6">
+  <div class="flex justify-center pb-6">
+    <span class="font-bold text-xl text-zinc-800 px-2 py-2 justify-center rounded-lg"><%= @course.title %></span>
+    <div class="ps-5">
+      <%= button_to new_user_course_lesson_path(current_user, @course), method: :get, class: 'font-bold text-xl text-zinc-800 px-2 py-2 justify-center bg-orange-200 rounded-lg border-[1px] border-zinc-800' do %>
+        + Добавить урок
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<% @lessons.each do |lesson| %>
+  <div class="col-start-4 col-end-10 rounded-lg bg-zinc-100 mb-5 px-4 py-2">
+    <span class="font-bold text-zinc-600 text-xl"><%= lesson.title %></span>
+  </div>
+<% end %>
