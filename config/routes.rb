@@ -1,14 +1,17 @@
 Rails.application.routes.draw do
   get 'dashboard', to: 'dashboards#index'
-  devise_for :users, controllers: {sessions: "sessions", registrations: "registrations"}
+  devise_for :users, controllers: { sessions: "sessions", registrations: "registrations" }
 
-  # resources :users do
-
+  resources :courses, only: %i[index]
   resources :users do
     resources :profiles, only: %i[new show create edit update destroy]
+    resources :courses, only: %i[new show create edit update destroy] do
+      resources :lessons, shallow: true
+    end
   end
 
   get '/my_profile', to: 'profiles#my_profile'
+  get '/my_materials', to: 'courses#my_materials'
 
   # end
   # end

@@ -10,9 +10,42 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_12_26_121600) do
+ActiveRecord::Schema[7.1].define(version: 2023_12_28_102746) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "courses", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "language"
+    t.integer "status"
+    t.integer "availability"
+    t.integer "price"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_courses_on_user_id"
+  end
+
+  create_table "courses_profiles", force: :cascade do |t|
+    t.bigint "profile_id", null: false
+    t.bigint "course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_courses_profiles_on_course_id"
+    t.index ["profile_id"], name: "index_courses_profiles_on_profile_id"
+  end
+
+  create_table "lessons", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.integer "order"
+    t.boolean "demo"
+    t.bigint "course_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_id"], name: "index_lessons_on_course_id"
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string "login"
@@ -55,5 +88,9 @@ ActiveRecord::Schema[7.1].define(version: 2023_12_26_121600) do
     t.index ["user_id"], name: "index_users_roles_on_user_id"
   end
 
+  add_foreign_key "courses", "users"
+  add_foreign_key "courses_profiles", "courses"
+  add_foreign_key "courses_profiles", "profiles"
+  add_foreign_key "lessons", "courses"
   add_foreign_key "profiles", "users"
 end

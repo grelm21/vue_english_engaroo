@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one :profile, dependent: :destroy
+  has_many :courses, dependent: :destroy
   after_create :assign_default_role
 
   private

@@ -1,4 +1,10 @@
 <%#= render 'navigation/top_menu' %>
 <%= render 'navigation/nav_bar' %>
 
+<% unless user_signed_in? %>
+<div role="button" class="col-start-4 col-end-10 rounded-lg border-[1px] border-zinc-800 bg-orange-300 mt-6">
+  <p class="text-xl text-zinc-800 px-4 py-4">Вы не авторизированы. Доступ ко многим функциям ограничен. Чтобы использовать полный функционал сервиса, пожалуйста, авторизируйтесь.</p>
+</div>
+<% end %>
+
 
