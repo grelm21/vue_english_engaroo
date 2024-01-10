@@ -42,3 +42,48 @@ u8 = User.create! email: 'teacher4@gmail.com', password: '123456'
 p8 = u8.build_profile first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, bio: Faker::Quote.yoda
 p8.save
 u8.add_role :teacher
+
+puts '[Seed::Courses] Создаем курсы'.red
+course1 = Course.create!(title: 'Go Getter 1',
+                         description: 'Курс для младших подростков от Oxford',
+                         language: 0,
+                         status: 1,
+                         availability: 0,
+                         user: u1)
+
+puts '[Seed::Lessons] Создаем уроки'.red
+lesson1 = Lesson.create(title: 'Intro lesson',
+                        description: 'Вводный урок для оценки уровня ученика',
+                        # order: 1,
+                        demo: true,
+                        course: course1)
+
+lesson2 = Lesson.create(title: '1A to be',
+                        description: 'to be verb and basic phrases',
+                        # order: 2,
+                        demo: true,
+                        course: course1)
+
+lesson3 = Lesson.create(title: '1B to be negative',
+                        description: 'to be revision and negative to be form',
+                        # order: 3,
+                        demo: true,
+                        course: course1)
+
+lesson4 = Lesson.create(title: '2A basic adjectives',
+                        description: 'adjectives to describe people',
+                        # order: 4,
+                        demo: true,
+                        course: course1)
+
+lesson5 = Lesson.create(title: '2B Communication',
+                        description: 'practice speaking (introduction, talking about yourself)',
+                        # order: 5,
+                        demo: true,
+                        course: course1)
+
+lesson6 = Lesson.create(title: '1 and 2 test',
+                        description: 'assignment to check',
+                        # order: 6,
+                        demo: true,
+                        course: course1)
