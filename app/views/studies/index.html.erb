@@ -1,0 +1,7 @@
+<%= render 'navigation/nav_bar' %>
+
+<% @student_courses.each do |student_courses| %>
+  <div class="col-span-12 flex bg-zinc-100 rounded-lg mt-4">
+    <span class="justify-center"><%=student_courses.title %></span>
+  </div>
+<% end %>

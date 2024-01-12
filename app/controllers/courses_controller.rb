@@ -1,11 +1,12 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: %i[ show edit update destroy ]
-  before_action :get_user, only: %i[ new create my_materials ]
+  before_action :get_user, only: %i[ index new create ]
   before_action :authenticate_user!
+  before_action :admin_teacher_role
 
   # GET /courses or /courses.json
   def index
-    @courses = Course.all
+    @user_courses = @user.courses.all
   end
 
   # GET /courses/1 or /courses/1.json
@@ -27,7 +28,7 @@ class CoursesController < ApplicationController
 
     respond_to do |format|
       if @course.save
-        format.html { redirect_to course_url(@course), notice: "Course was successfully created." }
+        format.html { redirect_to course_lessons_path(current_user, @course), notice: "Course was successfully created." }
         format.json { render :show, status: :created, location: @course }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -51,17 +52,14 @@ class CoursesController < ApplicationController
 
   # DELETE /courses/1 or /courses/1.json
   def destroy
+    authorize @course
+
     @course.destroy!
 
     respond_to do |format|
-      format.html { redirect_to courses_url, notice: "Course was successfully destroyed." }
+      format.html { redirect_to courses_path, notice: "Course was successfully destroyed." }
       format.json { head :no_content }
     end
-  end
-
-  def my_materials
-    authorize @user
-    @user_courses = @user.courses.all
   end
 
   private
@@ -78,5 +76,9 @@ class CoursesController < ApplicationController
   # Only allow a list of trusted parameters through.
   def course_params
     params.require(:course).permit(:title, :description, :language, :status, :availability, :price)
+  end
+
+  def admin_teacher_role
+    redirect_to root_path unless current_user.has_role? :admin || :teacher
   end
 end

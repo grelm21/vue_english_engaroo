@@ -87,3 +87,54 @@ lesson6 = Lesson.create(title: '1 and 2 test',
                         # order: 6,
                         demo: true,
                         course: course1)
+
+course2 = Course.create!(title: 'Уровень выживания: Английский язык',
+                         description: 'Для тех, кому английский нужен срочно - здесь и сейчас',
+                         language: 0,
+                         status: 1,
+                         availability: 0,
+                         user: u2)
+
+course3 = Course.create!(title: 'Perspectives 1',
+                         description: 'Начальный курс американского английского для подростков',
+                         language: 0,
+                         status: 1,
+                         availability: 0,
+                         user: u5)
+
+course4 = Course.create!(title: 'Minna no nihongo 1',
+                         description: 'Начальный курс японского языка основанный на учебнике MNN1',
+                         language: 0,
+                         status: 1,
+                         availability: 0,
+                         user: u6)
+
+course5 = Course.create!(title: 'CAE',
+                         description: 'Курс продвинутого английского для отчаянных',
+                         language: 0,
+                         status: 1,
+                         availability: 0,
+                         user: u1)
+
+course6 = Course.create!(title: 'Japanese N3',
+                         description: 'Подготовка к Нореку Сикен 3 уровня',
+                         language: 0,
+                         status: 1,
+                         availability: 0,
+                         user: u8)
+
+course7 = Course.create!(title: 'Own it! 2',
+                         description: 'Курс для младших подростков по современному учебнику',
+                         language: 0,
+                         status: 1,
+                         availability: 0,
+                         user: u1)
+
+
+course8 = Course.create!(title: 'Неправильные глаголы в действии',
+                         description: 'Марафон по неправильным глаголам английского языка',
+                         language: 0,
+                         status: 1,
+                         availability: 0,
+                         user: u1)
+

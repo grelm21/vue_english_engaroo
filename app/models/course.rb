@@ -4,8 +4,7 @@ class Course < ApplicationRecord
 
   belongs_to :user
 
-  has_many :courses_profiles, dependent: :destroy
-  has_many :profiles, through: :courses_profiles
+  has_many :students, dependent: :destroy
   has_many :lessons, dependent: :destroy
 
   after_create :creator_student
@@ -28,11 +27,11 @@ class Course < ApplicationRecord
   personal
   ], default: :public
 
+  scope :student_courses, ->(user_id) {includes(:students => :user).where(students: {user_id: user_id})}
+
   private
   def creator_student
     user.add_role(:creator, self)
-    user.add_role(:student, self)
-
-    CoursesProfile.create(profile_id: user.profile.id, course_id: self.id)
+    Student.add_student(user, self)
   end
 end

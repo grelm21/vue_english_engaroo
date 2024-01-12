@@ -29,7 +29,7 @@ class LessonsController < ApplicationController
 
     respond_to do |format|
       if @lesson.save
-        format.html { redirect_to user_course_lessons_path(current_user, @course), notice: "Lesson was successfully created." }
+        format.html { redirect_to course_lessons_path(@course), notice: "Lesson was successfully created." }
         format.json { render :show, status: :created, location: @lesson }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -56,7 +56,7 @@ class LessonsController < ApplicationController
     @lesson.destroy!
 
     respond_to do |format|
-      format.html { redirect_to lessons_url, notice: "Lesson was successfully destroyed." }
+      format.html { redirect_to course_lessons_url(@course), notice: "Lesson was successfully destroyed." }
       format.json { head :no_content }
     end
   end
