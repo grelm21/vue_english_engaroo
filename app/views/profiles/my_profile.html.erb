@@ -1,0 +1,14 @@
+<%#= render 'navigation/top_menu' %>
+<%= render 'navigation/nav_bar' %>
+
+<div class="col-span-12 w-full pt-6">
+  <div class="flex justify-center pb-6">
+    <span class="font-bold text-xl text-zinc-800 px-2 py-2 justify-center rounded-lg">Мои профиль</span>
+    <div class="ps-5">
+      <%= button_to edit_user_profile_path(current_user, current_user.profile), method: :get, class: 'font-bold text-xl text-zinc-800 px-2 py-2 justify-center bg-orange-200 rounded-lg border-[1px] border-zinc-800' do %>
+        Редактировать
+      <% end %>
+    </div>
+  </div>
+  <%= render @profile %>
+</div>

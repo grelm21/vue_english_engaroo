@@ -1,0 +1,11 @@
+---
+one:
+  id: 1
+  name: user
+  resource_type:
+  resource_id:
+two:
+  id: 2
+  name: admin
+  resource_type:
+  resource_id:

@@ -1,0 +1,30 @@
+<%= form_with(model: [@user, profile]) do |form| %>
+  <% if profile.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+      <ul>
+        <% profile.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="grid grid-cols-2 gap-4 bg-zinc-100 rounded-xl py-4 px-4">
+    <div class="col-span-2 w-full pb-2 text-2xl text-zinc-700">Обо мне</div>
+    <div>
+      <%= form.text_area :first_name, class: "block w-full h-min rounded-lg border-[1px] border-red-300 focus:border-red-800 focus:ring-0", placeholder: "Ваше имя*", required: '' %>
+    </div>
+    <div>
+      <%= form.text_area :last_name, class: "block w-full rounded-lg border-[1px] border-red-300 focus:border-red-800 focus:ring-0", placeholder: "Ваша фамилия" %>
+    </div>
+    <div class="col-span-2">
+      <%= form.text_area :bio, class: "block w-full rounded-lg border-[1px] border-red-300 focus:border-red-800 focus:ring-0", placeholder: "Расскажите о себе" %>
+    </div>
+
+    <div>
+      <%= form.submit "Отправить", :class => 'flex h-10 px-4 bg-orange-200 border-[1px] rounded-lg border-red-200 focus:border-orange-800 focus:bg-orange-400 focus:ring-0' %>
+    </div>
+  </div>
+
+<% end %>

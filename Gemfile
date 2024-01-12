@@ -65,3 +65,18 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+gem "devise", "~> 4.9"
+
+gem "tailwindcss-rails", "~> 2.1"
+
+gem "rolify"
+gem "rainbow"
+gem 'faker'
+gem "breadcrumbs_on_rails"
+gem 'humanize'
+
+group :development do
+  gem "rails_live_reload"
+end
+gem "pundit", "~> 2.3"

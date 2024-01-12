@@ -5,12 +5,85 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="min-h-screen bg-zinc-200">
+  <main class="relative container min-w-[1280px] w-full mx-auto bg-zinc-200">
+    <div class="grid grid-cols-12 gap-x-5 px-4">
+      <%= yield %>
+    </div>
+<!--    <div class="navbar bg-zinc-100 rounded-b-lg col-span-12 flex">-->
+<!--      <div class="navbar-start">-->
+<!--        <img class="h-[80px] place-content-center" src="logo.png">-->
+<!--        <a class="btn btn-ghost text-xl">-->
+          <%#= link_to root_path, class: 'flex col-span-3 inline-box items-start justify-start' do %>
+<!--            <span class="flex text-sm text-zinc-700 font-bold text-xl">ENGaroo.online</span>-->
+          <%# end %>
+<!--        </a>-->
+<!--      </div>-->
+
+<!--      <div class="flex items-center navbar-center">-->
+
+<!--        <div class="grid grid-cols-3">-->
+<!--          <div class="flex justify-center btn btn-ghost text-xl">-->
+            <%#= link_to root_path, class: 'flex justify-center' do %>
+<!--              <span class="flex text-sm text-zinc-400 text-xl">Сообщество</span>-->
+            <%# end %>
+<!--          </div>-->
+          <%# if user_signed_in? %>
+<!--            <div class="flex justify-center btn btn-ghost text-xl">-->
+              <%#= link_to root_path, class: 'flex justify-center' do %>
+<!--                <span class="flex text-sm text-zinc-400 text-xl">Мои курсы</span>-->
+              <%# end %>
+<!--            </div>-->
+          <%# end %>
+<!--          <div class="flex justify-center btn btn-ghost text-xl">-->
+            <%#= link_to root_path, class: 'flex justify-center' do %>
+<!--              <span class="flex text-sm text-zinc-400 text-xl">О платформе</span>-->
+            <%# end %>
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+
+
+      <%# if user_signed_in? %>
+<!--        <div class="flex dropdown dropdown-bottom navbar-end">-->
+<!--          <div tabindex="0" role="button" class="flex btn btn-ghost avatar col-span-2">-->
+<!--            <div class="w-10 rounded-full">-->
+<!--              <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />-->
+<!--            </div>-->
+<!--            <span class="text-zinc-700 text-xl"><%#= current_user.profile.first_name %></span>-->
+<!--          </div>-->
+<!--          <ul tabindex="0" class="flex menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-orange-100 rounded-box w-52">-->
+<!--            <li>-->
+              <%# if current_user.profile.present? %>
+                <%# if current_user.profile.first_name.present? %>
+                  <%#= button_to my_profile_path, method: :get, class: 'flex w-full h-[20px] text-zinc-800 hover:text-[#B91C1C] items-center' do %>
+<!--                    Профиль-->
+                  <%# end %>
+                <%# end %>
+              <%# end %>
+<!--            </li>-->
+<!--            <li>-->
+              <%#= button_to destroy_user_session_path, method: :delete, class: 'flex w-full text-[#DC2626] hover:text-[#B91C1C] pt-2 items-center' do %>
+<!--                Выход-->
+              <%# end %>
+<!--            </li>-->
+<!--          </ul>-->
+<!--        </div>-->
+      <%# else %>
+<!--        <div class="flex navbar-end">-->
+          <%#= button_to new_user_session_path, method: :get, class: 'flex w-full text-[#DC2626] hover:text-[#B91C1C] pt-2 items-center' do %>
+<!--            Авторизироваться-->
+          <%# end %>
+<!--        </div>-->
+      <%# end %>
+<!--    </div>-->
+    <%#= yield %>
+    </main>
   </body>
 </html>

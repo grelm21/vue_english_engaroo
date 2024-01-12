@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@tailwindcss/line-clamp": "^0.4.4",
+    "tailwindcss-stimulus-components": "^4.0.4"
+  },
+  "devDependencies": {
+    "daisyui": "^4.4.23"
+  }
+}
