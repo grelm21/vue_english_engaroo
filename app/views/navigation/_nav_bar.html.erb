@@ -9,18 +9,29 @@
   </div>
 
   <% if user_signed_in? %>
-  <div class="flex items-center navbar-center">
-    <div class="flex justify-center btn btn-ghost text-xl">
-      <%= link_to root_path, class: 'flex justify-center' do %>
-        <span class="flex text-zinc-400 text-xl">Сообщество</span>
-      <% end %>
+    <div class="flex items-center navbar-center">
+      <div class="flex justify-center btn btn-ghost text-xl">
+        <%= link_to root_path, class: 'flex justify-center' do %>
+          <span class="flex text-zinc-400 text-xl">Сообщество</span>
+        <% end %>
+      </div>
     </div>
-  </div>
+
+    <% if current_user.has_role? :admin || :teacher %>
+      <div class="flex items-center navbar-center">
+        <div class="flex justify-center btn btn-ghost text-xl">
+          <%= link_to courses_path, method: :get, class: 'flex justify-center' do %>
+            <span class="flex text-zinc-400 text-xl">Мои материалы</span>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
 
     <div class="flex items-center navbar-center">
       <div class="flex justify-center btn btn-ghost text-xl">
-        <%= link_to my_materials_path, method: :get, class: 'flex justify-center' do %>
-          <span class="flex text-zinc-400 text-xl">Мои материалы</span>
+        <%= link_to user_studies_path(current_user), method: :get, class: 'flex justify-center' do %>
+          <span class="flex text-zinc-400 text-xl">Мои курсы</span>
         <% end %>
       </div>
     </div>

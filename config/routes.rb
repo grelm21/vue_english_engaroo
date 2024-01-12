@@ -5,13 +5,16 @@ Rails.application.routes.draw do
   resources :courses, only: %i[index]
   resources :users do
     resources :profiles, only: %i[new show create edit update destroy]
-    resources :courses, only: %i[new show create edit update destroy] do
-      resources :lessons, shallow: true
-    end
+    resources :studies, only: %i[index show destroy]
   end
 
+  resources :courses, only: %i[new show create edit update destroy] do
+    resources :lessons, shallow: true
+  end
+
+  resources :classrooms, only: %i[show]
+
   get '/my_profile', to: 'profiles#my_profile'
-  get '/my_materials', to: 'courses#my_materials'
 
   # end
   # end

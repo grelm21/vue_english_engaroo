@@ -1,0 +1,17 @@
+---
+one:
+  login:
+  first_name: Stephan
+  last_name: Douglas
+  bio: The dark side clouds everything. Impossible to see the future is.
+  user: one
+two:
+  login:
+  first_name: Jules
+  last_name: Olson
+  bio: Yes, a Jedi’s strength flows from the Force. But beware of the dark side. Anger,
+    fear, aggression; the dark side of the Force are they. Easily they flow, quick
+    to join you in a fight. If once you start down the dark path, forever will it
+    dominate your destiny, consume you it will, as it did Obi-Wan’s apprentice.
+  user: two
+
