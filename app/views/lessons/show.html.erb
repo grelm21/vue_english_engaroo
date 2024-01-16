@@ -1,15 +1,32 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
+<!--top bar-->
+<div class="col-span-12 bg-zinc-100 px-4 py-4 rounded-b-lg">
+  <span class="flex text-zinc-500 text-2xl font-bold justify-center">Урок <%= @lesson.order %></span>
+  <span class="flex text-zinc-800 text-2xl font-bold justify-center mt-4"><%= @lesson.title %></span>
+</div>
 
-    <%= render @lesson %>
-
-    <%= link_to "Edit this lesson", edit_lesson_path(@lesson), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <div class="inline-block ml-2">
-      <%= button_to "Destroy this lesson", lesson_path(@lesson), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+  <% @tasks.each do |task| %>
+    <div class="col-start-4 col-end-10 w-full pt-6">
+      <%# @new_task_part = task.build_new_task_part %>
+      <%= render task, locals = { building: @tasks_build[task.id], index: @tasks.find_index(task) }%>
     </div>
-    <%= link_to "Back to lessons", lessons_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <% end %>
+
+<% if @new_task %>
+  <div class="col-start-4 col-end-10 w-full mt-6">
+    <%= render 'tasks/form', task: @task %>
   </div>
+<% end %>
+
+<div class="col-start-6 col-end-8 px-4 mt-6">
+  <% unless @new_task %>
+    <%= button_to lesson_path(@lesson), method: :get, params: { 'new_task' => true }, class: 'flex w-48 bg-zinc-300 border-[1px] border-zinc-800 rounded-2xl col-start-5 hover:bg-zinc-400 justify-center px-4 py-2' do %>
+        <span class="text-zinc-800 font-semibold">Новое задание</span>
+    <% end %>
+  <% end %>
+
+  <% if @new_task %>
+    <%= button_to lesson_path(@lesson), method: :get, class: 'flex w-48 bg-zinc-300 border-[1px] border-zinc-800 rounded-2xl col-start-5 hover:bg-zinc-400  justify-center px-4 py-2' do %>
+        <span class="text-zinc-800 font-semibold">Отменить</span>
+    <% end %>
+  <% end %>
 </div>

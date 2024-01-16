@@ -1,0 +1,7 @@
+<%= form_with model: task, url: task_path(task) do |form| %>
+  <div class="grid grid-cols-12 gap-x-2 gap-y-2 items-center mb-4">
+    <%= form.text_area :description, class: 'col-span-12 rounded-lg border-zinc-400 focus:border-orange-400 focus:ring-0' %>
+    <%= form.text_area :note, class: 'col-span-11 rounded-lg border-zinc-400 focus:border-orange-400 focus:ring-0' %>
+    <%= form.submit "ок", :role => 'button', :class => 'text-zinc-800 py-1 px-4 text-xl font-bold bg-zinc-100 rounded-2xl border-[0.5px] border-zinc-400 hover:bg-zinc-300 hover:border-[1px] hover:border-zinc-800' %>
+  </div>
+<% end %>

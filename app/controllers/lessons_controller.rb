@@ -1,8 +1,8 @@
 class LessonsController < ApplicationController
 
   before_action :authenticate_user!
-  before_action :set_lesson, only: %i[ show edit update destroy ]
-  before_action :get_course
+  before_action :set_lesson, only: %i[ show edit update destroy new_task]
+  before_action :get_course, only: %i[index new create ]
   before_action :get_user
 
   # GET /lessons or /lessons.json
@@ -12,6 +12,22 @@ class LessonsController < ApplicationController
 
   # GET /lessons/1 or /lessons/1.json
   def show
+    @new_task = params[:new_task]||= false
+    @edit_task = Task.find(params[:edit_task]) if params[:edit_task].present?
+
+    @tasks = @lesson.tasks.all
+
+    if @new_task
+      @task = @lesson.tasks.build
+    end
+
+
+    @tasks_build = Hash.new
+    @tasks.each do |task|
+      @tasks_build[task.id] = task.matchings.build
+    end
+
+    puts "TASKS #{@tasks_build}"
   end
 
   # GET /lessons/new
@@ -61,6 +77,12 @@ class LessonsController < ApplicationController
     end
   end
 
+  def new_task
+    @new_task = params[:bool]
+    puts "FOR CONTROLLER #{@new_task}"
+    redirect_to lesson_path(@lesson)
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -76,8 +98,16 @@ class LessonsController < ApplicationController
     @user = current_user
   end
 
+  # def set_task
+  #   @task = @lesson.tasks.build
+  # end
+
   # Only allow a list of trusted parameters through.
   def lesson_params
     params.require(:lesson).permit(:title, :description, :demo)
+  end
+
+  def task_params
+    params.require(:task).permit(:description, :note, :order, :type)
   end
 end

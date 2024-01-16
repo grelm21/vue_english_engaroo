@@ -1,0 +1,15 @@
+<%= form_with(model: [@lesson, task], class: "contents") do |form| %>
+
+  <div class="grid grid-cols-1 px-4 py-4 bg-zinc-100 rounded-lg">
+    <span class="text-zinc-800 font-semibold text-medium mb-2">Описание:</span>
+    <%= form.text_field :description, class: 'rounded-lg border-zinc-400 focus:border-orange-400 focus:ring-0'%>
+
+    <span class="text-zinc-800 font-semibold text-medium mt-4 mb-2">Заметка:</span>
+    <%= form.text_field :note, class: 'rounded-lg border-zinc-400 focus:border-orange-400 focus:ring-0'%>
+
+    <%= hidden_field_tag "task[task_type]", 'matching'%>
+
+    <%= form.submit "Сохранить", :role => 'button', :class => 'w-32 rounded-lg bg-zinc-300 border-[1px] border-zinc-800 text-zinc-800 mt-6 hover:bg-zinc-400' %>
+  </div>
+
+<% end %>

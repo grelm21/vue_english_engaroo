@@ -9,8 +9,13 @@ Rails.application.routes.draw do
   end
 
   resources :courses, only: %i[new show create edit update destroy] do
-    resources :lessons, shallow: true
+    resources :lessons, shallow: true do
+      resources :tasks, only: %i[new create show edit update destroy], shallow: true do
+        resources :matchings, only: %i[new create edit update destroy], shallow: true
+      end
+    end
   end
+  get 'create_new_task/:bool/:id', to: 'lessons#new_task', as: :create_new_task
 
   resources :classrooms, only: %i[show]
 
