@@ -3,6 +3,8 @@ class Lesson < ApplicationRecord
   before_create :set_order
   after_create :set_demo
 
+  has_many :tasks, dependent: :destroy
+
   # scope :last_lessons_preview, ->(course) { where(course: course).order(order: :desc).limit(4) }
   scope :last_lessons_preview, -> { order(order: :desc).limit(4) }
 

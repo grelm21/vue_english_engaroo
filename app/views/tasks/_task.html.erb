@@ -1,0 +1,35 @@
+<% unless @edit_task.present? && @edit_task.id == task.id %>
+  <div class="flex col-start-4 col-end-10 w-full mb-2 items-center">
+    <div class="dropdown dropdown-bottom">
+      <span tabindex="0" role="button" class="text-zinc-800 py-1 px-4 text-xl font-bold bg-zinc-100 rounded-2xl border-[0.5px] border-zinc-400 hover:bg-zinc-300 hover:border-[1px] hover:border-zinc-800"><%= index + 1 %></span>
+      <ul tabindex="0" class="mt-4 dropdown-content z-[1] menu bg-zinc-100 rounded-box border-zinc-400 border-[0.5px]">
+        <li><%= button_to lesson_path(@lesson), method: :get, params: { 'edit_task' => task.id }, class: 'text-sm text-zinc-600 hover:font-bold' do %>
+            Редактировать
+          <% end %></li>
+        <li><%= button_to task_path(task.id), :method => :delete, class: 'text-sm text-zinc-600 hover:font-bold' do %>
+            Удалить
+          <% end %></li>
+      </ul>
+    </div>
+    <span class="text-zinc-700 text-xl font-semibold ms-2"><%= task.description %></span>
+  </div>
+
+  <% if task.note.present? %>
+    <div class="flex col-start-4 col-end-10 w-full mb-4">
+      <span class="text-zinc-600 font-light"><%= task.note %></span>
+    </div>
+  <% end %>
+<% end %>
+
+<% if @edit_task.present? && @edit_task.id == task.id %>
+  <%= render 'tasks/edit', task: @edit_task %>
+<% end %>
+
+<div class="grid grid-cols-11 px-4 py-4 gap-x-4 gap-y-4 bg-zinc-100 rounded-lg">
+  <% task.matchings.each do |matching| %>
+    <% if matching.id != nil %>
+      <%= render matching if matching.present? %>
+    <% end %>
+  <% end %>
+  <%= render 'matchings/form', task: task, matching: building %>
+</div>

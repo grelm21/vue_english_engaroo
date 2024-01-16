@@ -1,0 +1,7 @@
+<%= form_with model: [task, matching], class: 'grid grid-cols-11 gap-x-4 col-span-11' do |form| %>
+    <%= form.text_field :first_word, class: "col-span-5 w-full rounded-full border-[1px] border-zinc-400 focus:border-[2px] focus:border-orange-400 focus:ring-0", :autocomplete => 'off', :placeholder => 'Слово 1', required: '' %>
+
+    <%= form.text_field :second_word, class: "col-span-5 w-full rounded-full border-[1px] border-zinc-400 focus:border-[2px] focus:border-orange-400 focus:ring-0", :autocomplete => 'off', :placeholder => 'Слово 2', required: '' %>
+
+    <%= form.submit "+", :class => 'rounded-lg bg-zinc-300 text-3xl text-zinc-800 border-[1px] border-zinc-800 hover:bg-zinc-400'%>
+<% end %>
