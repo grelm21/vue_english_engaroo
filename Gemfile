@@ -76,6 +76,8 @@ gem 'faker'
 gem "breadcrumbs_on_rails"
 gem 'humanize'
 
+gem 'vite_rails'
+
 group :development do
   gem "rails_live_reload"
 end

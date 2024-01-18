@@ -1,9 +1,14 @@
 {
   "dependencies": {
     "@tailwindcss/line-clamp": "^0.4.4",
-    "tailwindcss-stimulus-components": "^4.0.4"
+    "tailwindcss-stimulus-components": "^4.0.4",
+    "vue": "^3.4.14"
   },
   "devDependencies": {
-    "daisyui": "^4.4.23"
+    "@vitejs/plugin-vue": "^5.0.3",
+    "daisyui": "^4.4.23",
+    "vite": "^5.0.0",
+    "vite-plugin-full-reload": "^1.1.0",
+    "vite-plugin-ruby": "^5.0.0"
   }
 }
